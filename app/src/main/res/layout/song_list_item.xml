@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for a list item -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/songs_parent_view"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    
+    <ImageView
+        android:id="@+id/song_image_view"
+        android:layout_width="@dimen/song_list_image_width"
+        android:layout_height="@dimen/song_list_image_height"
+        tools:src="@drawable/sample_album"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        tools:text="Persnickety"/>
+
+    <TextView
+        android:id="@+id/artist_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="6dp"
+        android:textStyle="bold"
+        tools:text="Outta M'mind"/>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/song_list_icon_width"
+        android:layout_height="@dimen/song_list_icon_height"
+        android:id="@+id/play_icon_image_view"
+        android:src="@drawable/play_icon"
+
+        />
+</LinearLayout>

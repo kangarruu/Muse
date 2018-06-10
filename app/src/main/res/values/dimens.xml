@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dimens for song list item -->
+    <dimen name="song_list_image_width">50dp</dimen>
+    <dimen name="song_list_image_height">50dp</dimen>
+    <dimen name="song_list_icon_width">50dp</dimen>
+    <dimen name="song_list_icon_height">50dp</dimen>
+    <!-- dimens for album list item -->
+</resources>

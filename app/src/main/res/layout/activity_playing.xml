@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayingActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/playing_image_view"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        tools:src="@drawable/sample_album"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"/>
+
+    <TextView
+        android:id="@+id/playing_artist_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playing_image_view"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        tools:text="Artist Name"/>
+
+    <TextView
+        android:id="@+id/playing_song_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playing_artist_text_view"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="22sp"
+        tools:text="Song Name"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/playing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

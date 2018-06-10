@@ -28,7 +28,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         //Declaring the parent view, two TextViews and ImageView in the album_list_layout
         public TextView artist, album;
         public ImageView cover;
-        RelativeLayout parentView;
+        public RelativeLayout parentView;
 
         //Inflating the ViewHolder and locating the above Views via findViewByID
         public AlbumViewHolder(View itemView){

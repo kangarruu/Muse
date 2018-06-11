@@ -21,15 +21,31 @@ public class Album {
     }
 
     public String getAlbumName(){
+
         return mAlbumName;
     }
 
+    public void setAlbumName(String albumName){
+        mAlbumName = albumName;
+    }
+
     public String getArtistName(){
+
         return mArtistName;
     }
 
+    public void setArtistName(String artistName){
+        mArtistName = artistName;
+    }
+
+
     public int getImageResourceId(){
+
         return mImageResourceId;
+    }
+
+    public void setImageResourceId(int imageResourceId){
+        mImageResourceId = imageResourceId;
     }
 }
 

@@ -1,11 +1,16 @@
 package com.example.android.muse;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Create a new album list
-        ArrayList<Album> albums = new ArrayList<>();
+        final ArrayList<Album> albums = new ArrayList<>();
         albums.add(new Album("Sample Album 1", "Sample Artist 1", R.drawable.sample_album));
         albums.add(new Album("Sample Album 2", "Sample Artist 2 ", R.drawable.sample_album));
         albums.add(new Album("Sample Album 3", "Sample Artist 3", R.drawable.sample_album));
@@ -43,5 +48,74 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         //Set the GridLayoutManager as the RecyclerView LayoutManager
         recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Album album = albums.get(position);
+                Toast.makeText(getApplicationContext(),album.getAlbumName() + " is selected", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position)   {
+            }
+        }));
     }
+
+    /*I learned how to implement the interface below (and above recyclerView.addOnItemTouchListener) using the following resources:
+    *https://tutorialwing.com/android-recyclerview-tutorial-example/
+    *https://medium.com/@harivigneshjayapalan/android-recyclerview-implementing-single-item-click-and-long-press-part-ii-b43ef8cb6ad8
+    *https://www.androidhive.info/2016/01/android-working-with-recycler-view/
+     */
+
+    //Define the interface ClickListener
+    public static interface ClickListener{
+        void onClick(View view, int position);
+        void onLongClick(View view, int position);
+    }
+
+    //Implement RecyclerView.OnItemTouchListener to enable onclick
+    public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
+        private GestureDetector gestureDetector;
+        private MainActivity.ClickListener clickListener;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener){
+            this.clickListener = clickListener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(),e.getY());
+                    if (child != null && clickListener != null){
+                        clickListener.onLongClick(child, recyclerView.getChildAdapterPosition(child));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child!= null && clickListener != null && gestureDetector.onTouchEvent(e)){
+                clickListener.onClick(child, rv.getChildAdapterPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+    }
+
 }
+

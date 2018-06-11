@@ -24,11 +24,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         this.mContext = mContext;
     }
 
-    public class AlbumViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class AlbumViewHolder extends RecyclerView.ViewHolder {
         //Declaring the parent view, two TextViews and ImageView in the album_list_layout
         public TextView artist, album;
         public ImageView cover;
-        public RelativeLayout parentView;
+
 
         //Inflating the ViewHolder and locating the above Views via findViewByID
         public AlbumViewHolder(View itemView){
@@ -36,12 +36,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
             artist = (TextView)itemView.findViewById(R.id.artist_text_view);
             album = (TextView)itemView.findViewById(R.id.album_text_view);
             cover = (ImageView)itemView.findViewById(R.id.artist_image_view);
-            //Locate the parent RelativeLayout so we can later set an onClickListener on it
-            parentView = (RelativeLayout) itemView.findViewById(R.id.album_parent_layout);
-        }
-        //Override the default onClick method
-        @Override
-        public void onClick(View v) {
         }
     }
     //Pass in the layout file for the ViewHolder to inflate the view
@@ -58,13 +52,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         holder.artist.setText(currentAlbum.getArtistName());
         holder.album.setText(currentAlbum.getAlbumName());
         holder.cover.setImageResource(currentAlbum.getImageResourceId());
-        holder.parentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, SongsActivity.class);
-                mContext.startActivity(intent);
-            }
-        });
     }
     @Override
     public int getItemCount() {

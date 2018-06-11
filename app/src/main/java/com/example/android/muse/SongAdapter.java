@@ -35,7 +35,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         //Get the Word object located at the current position in the list
         Song currentSong = getItem(position);
 
-        //Locate the TextView in the song_list_item.xmlm.xml that holds the song title for Song object via findViewByID
+        //Locate the TextView in the song_list_item.xml that holds the song title for Song object via findViewByID
         TextView title_text_view = (TextView) listItemView.findViewById(R.id.title_text_view);
         //Get the title associated with current Song object in the ArrayList and set it on the TextView
         title_text_view.setText(currentSong.getSongTitle());

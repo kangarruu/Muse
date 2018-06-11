@@ -1,8 +1,11 @@
 package com.example.android.muse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -12,6 +15,12 @@ public class SongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
+
+        Intent songsIntent = getIntent();
+        String artist_name = songsIntent.getStringExtra("artist_name");
+        String album_name = songsIntent.getStringExtra("album_name");
+        int resource_id =  songsIntent.getIntExtra("resource_id", 00);
+
 
         //Create a new song list
         ArrayList<Song> artist_1_songs = new ArrayList<>();

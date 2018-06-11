@@ -1,6 +1,7 @@
 package com.example.android.muse;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -53,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Album album = albums.get(position);
-                Toast.makeText(getApplicationContext(),album.getAlbumName() + " is selected", Toast.LENGTH_SHORT).show();
+                Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
+                songsIntent.putExtra("artist_name", album.getArtistName());
+                songsIntent.putExtra("album_name", album.getAlbumName());
+                songsIntent.putExtra("resource_id", album.getImageResourceId());
+                MainActivity.this.startActivity(songsIntent);
             }
 
             @Override
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     //Define the interface ClickListener
-    public static interface ClickListener{
+    public interface ClickListener{
         void onClick(View view, int position);
         void onLongClick(View view, int position);
     }

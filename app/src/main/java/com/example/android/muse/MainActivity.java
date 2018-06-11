@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Album album = albums.get(position);
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
-                songsIntent.putExtra("artist_name", album.getArtistName());
-                songsIntent.putExtra("album_name", album.getAlbumName());
-                songsIntent.putExtra("resource_id", album.getImageResourceId());
-                MainActivity.this.startActivity(songsIntent);
+                    songsIntent.putExtra("artist_name", album.getArtistName());
+                    songsIntent.putExtra("album_name", album.getAlbumName());
+                    songsIntent.putExtra("resource_id", album.getImageResourceId());
+                    MainActivity.this.startActivity(songsIntent);
             }
 
             @Override

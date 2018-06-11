@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //Create a new album list
         final ArrayList<Album> albums = new ArrayList<>();
         albums.add(new Album("Sample Album 1", "Sample Artist 1", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 2", "Sample Artist 2 ", R.drawable.sample_album));
+        albums.add(new Album("Sample Album 2", "Sample Artist 2", R.drawable.sample_album));
         albums.add(new Album("Sample Album 3", "Sample Artist 3", R.drawable.sample_album));
         albums.add(new Album("Sample Album 4", "Sample Artist 4", R.drawable.sample_album));
         albums.add(new Album("Sample Album 5", "Sample Artist 5", R.drawable.sample_album));

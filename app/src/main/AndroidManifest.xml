@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".MainActivity" android:label="Albums">
-            <intent-filter>
+                        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,10 +19,12 @@
         </activity>
         <activity
             android:name=".PlayingActivity"
-            android:label="Playing Now" />
+            android:label="Playing Now"
+            android:parentActivityName=".SongsActivity"/>
         <activity
             android:name=".SongsActivity"
-            android:label="Songs" />
+            android:label="Songs"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

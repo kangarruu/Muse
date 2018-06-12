@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,14 @@ public class SongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
+
+        Toolbar songsToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(songsToolbar);
+        ActionBar actBar = getSupportActionBar();
+        //Enable the Up button
+        if (actBar != null) {
+            actBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent songsIntent = getIntent();
         String artist = songsIntent.getStringExtra("artist_name");

@@ -2,6 +2,7 @@ package com.example.android.muse;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,8 +13,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Resources used to learn about toolbars: https://developer.android.com/training/appbar/up-action
+        //http://stacktips.com/tutorials/android/android-lollipop-toolbar-example
+        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mainToolbar);
+
 
         //Create a new album list
         final ArrayList<Album> albums = new ArrayList<>();

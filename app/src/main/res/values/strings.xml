@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Muse</string>
+    <string name="album_cover">album_cover</string>
 </resources>

@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Create a new album list
         final ArrayList<Album> albums = new ArrayList<>();
-        albums.add(new Album("Sample Album 1", "Sample Artist 1", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 2", "Sample Artist 2", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 3", "Sample Artist 3", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 4", "Sample Artist 4", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 5", "Sample Artist 5", R.drawable.sample_album));
+        albums.add(new Album("Just the Beginning", "Grace VanderWaal", R.drawable.grace_vanderwaal));
+        albums.add(new Album("25", "Adele", R.drawable.adele));
+        albums.add(new Album("Louder Now", "Taking Back Sunday", R.drawable.taking_back_sunday));
+        albums.add(new Album("Ghost Stories", "Coldplay", R.drawable.coldplay));
+        albums.add(new Album("Daisy", "Brand New", R.drawable.brand_new));
         albums.add(new Album("Sample Album 6", "Sample Artist 6", R.drawable.sample_album));
         albums.add(new Album("Sample Album 7", "Sample Artist 7", R.drawable.sample_album));
         albums.add(new Album("Sample Album 8", "Sample Artist 8", R.drawable.sample_album));
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //Create a new AlbumAdapter and feed in the above ArrayList
         AlbumAdapter adapter = new AlbumAdapter(this, albums);
         //Locate the RecyclerView in the layout file via FindViewById
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         //Set the adapter on the RecyclerView
         recyclerView.setAdapter(adapter);
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         private GestureDetector gestureDetector;
         private MainActivity.ClickListener clickListener;
 
-        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener){
+        private RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener){
             this.clickListener = clickListener;
             gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
                 @Override

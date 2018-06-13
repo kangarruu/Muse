@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Resources used to learn about toolbars: https://developer.android.com/training/appbar/up-action
         //http://stacktips.com/tutorials/android/android-lollipop-toolbar-example
-        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
-
 
         //Create a new album list
         final ArrayList<Album> albums = new ArrayList<>();

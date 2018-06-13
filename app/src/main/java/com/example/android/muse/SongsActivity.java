@@ -3,6 +3,7 @@ package com.example.android.muse;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,14 +19,15 @@ public class SongsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
 
-        Toolbar songsToolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Locate the Toolbar to set it to act as the ActionBar
+        Toolbar songsToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(songsToolbar);
-        ActionBar actBar = getSupportActionBar();
-        //Enable the Up button
-        if (actBar != null) {
-            actBar.setDisplayHomeAsUpEnabled(true);
+        //enable up button functionality
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        //Get intent extras from MainActivity
         Intent songsIntent = getIntent();
         String artist = songsIntent.getStringExtra("artist_name");
         String album_name = songsIntent.getStringExtra("album_name");
@@ -127,6 +129,7 @@ public class SongsActivity extends AppCompatActivity {
         //Find the ListView object in the SongsActivity layout file with the ID called list_view
         ListView listView = findViewById(R.id.list_view);
 
+        //Check if which artist name matches the intent extra, and set corresponding ArrayList of songs
         switch (artist.trim()) {
             case "Grace VanderWaal": {
                 //Create new adapter, @param AlbumArray that corresponds to the right album
@@ -171,7 +174,4 @@ public class SongsActivity extends AppCompatActivity {
                 break;
             }
         }
-
-
-
 }}

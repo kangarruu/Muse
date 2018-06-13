@@ -12,15 +12,14 @@ public class PlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
 
-        //Resources used to learn about toolbars: https://developer.android.com/training/appbar/up-action
-        // Set toolbar from layout file
-        Toolbar playingToolbar = (Toolbar) findViewById(R.id.toolbar);
-        //Get a support ActionBar corresponding to this toolbar
-        ActionBar actBar = getSupportActionBar();
-        //Enable the Up button
-        if (actBar != null) {
-            actBar.setDisplayHomeAsUpEnabled(true);
+        // Locate the Toolbar to set it to act as the ActionBar
+        Toolbar songsToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(songsToolbar);
+        //enable up button functionality
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
 
 
 

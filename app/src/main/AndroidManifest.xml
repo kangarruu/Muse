@@ -4,14 +4,16 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".MainActivity" android:label="Albums">
-                        <intent-filter>
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="Albums">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,11 +22,19 @@
         <activity
             android:name=".PlayingActivity"
             android:label="Playing Now"
-            android:parentActivityName=".SongsActivity"/>
+            android:parentActivityName=".SongsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.muse.SongsActivity" />/>
+        </activity>
         <activity
             android:name=".SongsActivity"
             android:label="Songs"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.muse.MainActivity" />/>
+        </activity>
     </application>
 
 </manifest>

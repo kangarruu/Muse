@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- Resources used to learn coordinatorLayout & appBarLayout: https://guides.codepath.com/android/using-the-app-toolbar
+     https://developer.android.com/training/implementing-navigation/ancestral, and a big thanks to @Iva.ProjectCoach [ABND]!-->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?android:actionBarSize"/>
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:actionBarSize" />
+
+    </android.support.design.widget.AppBarLayout>
+
 
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="?android:actionBarSize"/>
+        android:paddingTop="?android:actionBarSize" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

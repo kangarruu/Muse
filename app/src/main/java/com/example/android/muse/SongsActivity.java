@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -127,7 +128,19 @@ public class SongsActivity extends AppCompatActivity {
         artist_8_songs.add(new Song("Sample Song 8", "Sample Artist 8", R.drawable.sample_album));
 
         //Find the ListView object in the SongsActivity layout file with the ID called list_view
-        ListView listView = findViewById(R.id.list_view);
+        final ListView listView = findViewById(R.id.list_view);
+        //Set an OnItemClickListener to open up currently playing song
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object currentSong = listView.getItemAtPosition(position);
+                Intent playingIntent = new Intent(SongsActivity.this, PlayingActivity.class);
+                if (getIntent() != null) {
+                    playingIntent.putExtra("position", position);
+                }
+                SongsActivity.this.startActivity(playingIntent);
+            }
+        });
 
         //Check if which artist name matches the intent extra, and set corresponding ArrayList of songs
         switch (artist.trim()) {

@@ -1,5 +1,6 @@
 package com.example.android.muse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -20,8 +21,9 @@ public class PlayingActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
-
+      //Get intent extras from SongActivity
+        Intent playingIntent = getIntent();
+        Song position = playingIntent.getParcelableExtra("position");
 
 
     }

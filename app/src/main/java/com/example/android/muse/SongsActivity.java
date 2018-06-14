@@ -1,8 +1,12 @@
 package com.example.android.muse;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -10,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +35,7 @@ public class SongsActivity extends AppCompatActivity {
 
         //Get intent extras from MainActivity
         Intent songsIntent = getIntent();
-        String artist = songsIntent.getStringExtra("artist_name");
+        final String artist = songsIntent.getStringExtra("artist_name");
         String album_name = songsIntent.getStringExtra("album_name");
         int resource_id =  songsIntent.getIntExtra("resource_id", 0);
 
@@ -133,10 +138,16 @@ public class SongsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object currentSong = listView.getItemAtPosition(position);
+                TextView artistName = view.findViewById(R.id.artist_text_view);
+                String artist = artistName.getText().toString();
+                TextView songTitle = view.findViewById(R.id.title_text_view);
+                String currentSong = songTitle.getText().toString();
+
+                //Create new intent to start PlayingActivity and pass current song details
                 Intent playingIntent = new Intent(SongsActivity.this, PlayingActivity.class);
                 if (getIntent() != null) {
-                    playingIntent.putExtra("position", position);
+                 playingIntent.putExtra("current_artist", artist);
+                 playingIntent.putExtra("current_song", currentSong);
                 }
                 SongsActivity.this.startActivity(playingIntent);
             }

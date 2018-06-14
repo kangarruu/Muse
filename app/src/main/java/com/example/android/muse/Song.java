@@ -24,12 +24,23 @@ public class Song {
         return mSongTitle;
     }
 
+    public void setSongTitle(String songName){
+        mSongTitle = songName;
+    }
+
     public String getArtistName(){
         return mArtistName;
+    }
+
+    public void setArtistName (String artistName){
+        mArtistName = artistName;
     }
 
     public int getImageResourceId(){
         return mImageResourceId;
     }
+
+    public void setImageResourceId(int imageResourceId){ mImageResourceId = imageResourceId;}
+
 }
 

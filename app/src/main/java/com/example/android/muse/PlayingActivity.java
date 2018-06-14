@@ -32,15 +32,18 @@ public class PlayingActivity extends AppCompatActivity {
         //Get intent info from SongActivity
         Intent playingIntent = getIntent();
         if (getIntent().getExtras() != null) {
-            //Get intent extra for the artist name of the currently playing song and set it on artist textView
-            String current_artist = playingIntent.getStringExtra("current_artist");
-            TextView artistName = this.findViewById(R.id.playing_artist_text_view);
-            artistName.setText(current_artist);
+            //Get Parcelable intent extra from SongActivity
+            Song current_song = playingIntent.getParcelableExtra("Song_playing");
 
-            //Get intent extra for the name of the currently playing song and set it on song textView
-            String current_song = playingIntent.getStringExtra("current_song");
+            // set on correct views
+            TextView artistName = this.findViewById(R.id.playing_artist_text_view);
+            artistName.setText(current_song.getArtistName());
+
             TextView songTitle = this.findViewById(R.id.playing_song_text_view);
-            songTitle.setText(current_song);
+            songTitle.setText(current_song.getSongTitle());
+
+            ImageView cover = this.findViewById(R.id.playing_image_view);
+            cover.setImageResource(current_song.getImageResourceId());
 
 
         }

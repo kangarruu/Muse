@@ -138,16 +138,25 @@ public class SongsActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //find the TextView with the name artist_text_view and set it's current contents to a String to pass as a param in the object Parceable
                 TextView artistName = view.findViewById(R.id.artist_text_view);
                 String artist = artistName.getText().toString();
-                TextView songTitle = view.findViewById(R.id.title_text_view);
+
+                //find the TextView with the name title_text_view and set it's current contents to a String to pass as a param in the object Parceable
+               TextView songTitle = view.findViewById(R.id.title_text_view);
                 String currentSong = songTitle.getText().toString();
+
+                //find the ImageView with the name song_image_view and set it's tag to pass as a param in the object Parceable
+                //Learned how to assign a tag and pass it as an extra here: https://stackoverflow.com/questions/32530156/how-to-get-image-id-from-listview
+                //https://stackoverflow.com/questions/17393508/how-to-get-the-drawable-name-from-my-image-in-a-list-view-android
+                ImageView cover = view.findViewById(R.id.song_image_view);
+                int coverTag = (int) cover.getTag();
 
                 //Create new intent to start PlayingActivity and pass current song details
                 Intent playingIntent = new Intent(SongsActivity.this, PlayingActivity.class);
                 if (getIntent() != null) {
-                 playingIntent.putExtra("current_artist", artist);
-                 playingIntent.putExtra("current_song", currentSong);
+                playingIntent.putExtra("Song_playing", new Song(artist, currentSong, coverTag));
                 }
                 SongsActivity.this.startActivity(playingIntent);
             }

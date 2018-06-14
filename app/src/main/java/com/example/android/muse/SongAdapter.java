@@ -42,6 +42,8 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         //Get the resource ID associated with current Song object and set it on the ImageView stored in viewHolder
         viewHolder.song_image_view.setImageResource(currentSong.getImageResourceId());
+        viewHolder.song_image_view.setTag(currentSong.getImageResourceId());
+
 
         //Return the list item layout for implementation by the ListView
         return listItemView;

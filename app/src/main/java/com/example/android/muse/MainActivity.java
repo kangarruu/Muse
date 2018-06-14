@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
-        //Create a new album list
+        //Create a new album Arraylist
         final ArrayList<Album> albums = new ArrayList<>();
         albums.add(new Album("Just the Beginning", "Grace VanderWaal", R.drawable.grace_vanderwaal));
         albums.add(new Album("25", "Adele", R.drawable.adele));
         albums.add(new Album("Louder Now", "Taking Back Sunday", R.drawable.taking_back_sunday));
         albums.add(new Album("Ghost Stories", "Coldplay", R.drawable.coldplay));
         albums.add(new Album("Daisy", "Brand New", R.drawable.brand_new));
-        albums.add(new Album("Sample Album 6", "Sample Artist 6", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 7", "Sample Artist 7", R.drawable.sample_album));
-        albums.add(new Album("Sample Album 8", "Sample Artist 8", R.drawable.sample_album));
+        albums.add(new Album("Moenie and Kitchi", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        albums.add(new Album("Heartworms", "The Shins", R.drawable.the_shins));
+        albums.add(new Album("Melodrama", "Lorde", R.drawable.lorde));
 
 
         //Create a new AlbumAdapter and feed in the above ArrayList
@@ -64,27 +64,28 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Album album = albums.get(position);
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
-                    songsIntent.putExtra("artist_name", album.getArtistName());
-                    songsIntent.putExtra("album_name", album.getAlbumName());
-                    songsIntent.putExtra("resource_id", album.getImageResourceId());
-                    MainActivity.this.startActivity(songsIntent);
+                songsIntent.putExtra("artist_name", album.getArtistName());
+                songsIntent.putExtra("album_name", album.getAlbumName());
+                songsIntent.putExtra("resource_id", album.getImageResourceId());
+                MainActivity.this.startActivity(songsIntent);
             }
 
             @Override
-            public void onLongClick(View view, int position)   {
+            public void onLongClick(View view, int position) {
             }
         }));
     }
 
-    /*I learned how to implement the interface below (and above recyclerView.addOnItemTouchListener) using the following resources:
-    *https://tutorialwing.com/android-recyclerview-tutorial-example/
-    *https://medium.com/@harivigneshjayapalan/android-recyclerview-implementing-single-item-click-and-long-press-part-ii-b43ef8cb6ad8
-    *https://www.androidhive.info/2016/01/android-working-with-recycler-view/
+    /*I learned how to implement the interface below and the above recyclerView.addOnItemTouchListener using the following resources:
+     *https://tutorialwing.com/android-recyclerview-tutorial-example/
+     *https://medium.com/@harivigneshjayapalan/android-recyclerview-implementing-single-item-click-and-long-press-part-ii-b43ef8cb6ad8
+     *https://www.androidhive.info/2016/01/android-working-with-recycler-view/
      */
 
     //Define the interface ClickListener
-    public interface ClickListener{
+    public interface ClickListener {
         void onClick(View view, int position);
+
         void onLongClick(View view, int position);
     }
 
@@ -93,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
         private GestureDetector gestureDetector;
         private MainActivity.ClickListener clickListener;
 
-        private RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener){
+        private RecyclerTouchListener(Context context, final RecyclerView recyclerView, final MainActivity.ClickListener clickListener) {
             this.clickListener = clickListener;
-            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
@@ -103,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onLongPress(MotionEvent e) {
-                    View child = recyclerView.findChildViewUnder(e.getX(),e.getY());
-                    if (child != null && clickListener != null){
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && clickListener != null) {
                         clickListener.onLongClick(child, recyclerView.getChildAdapterPosition(child));
                     }
                 }
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
             View child = rv.findChildViewUnder(e.getX(), e.getY());
-            if (child!= null && clickListener != null && gestureDetector.onTouchEvent(e)){
+            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
                 clickListener.onClick(child, rv.getChildAdapterPosition(child));
             }
             return false;

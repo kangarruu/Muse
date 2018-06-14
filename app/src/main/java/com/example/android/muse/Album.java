@@ -25,7 +25,7 @@ public class Album {
         return mAlbumName;
     }
 
-    public void setAlbumName(String albumName){
+    public void setAlbumName(String albumName) {
         mAlbumName = albumName;
     }
 

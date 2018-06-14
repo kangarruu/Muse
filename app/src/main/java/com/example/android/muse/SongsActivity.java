@@ -29,15 +29,16 @@ public class SongsActivity extends AppCompatActivity {
         Toolbar songsToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(songsToolbar);
         //enable up button functionality
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         //Get intent extras from MainActivity
         Intent songsIntent = getIntent();
         final String artist = songsIntent.getStringExtra("artist_name");
         String album_name = songsIntent.getStringExtra("album_name");
-        int resource_id =  songsIntent.getIntExtra("resource_id", 0);
+        int resource_id = songsIntent.getIntExtra("resource_id", 0);
 
         //Create a song lists corresponding to each album in the MainActivity
         ArrayList<Song> artist_1_songs = new ArrayList<>();
@@ -103,34 +104,34 @@ public class SongsActivity extends AppCompatActivity {
         artist_5_songs.add(new Song("Noro", "Brand New", R.drawable.brand_new));
 
         ArrayList<Song> artist_6_songs = new ArrayList<>();
-        artist_6_songs.add(new Song("Sample Song 1", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 2", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 3", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 4", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 5", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 6", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 7", "Sample Artist 6", R.drawable.sample_album));
-        artist_6_songs.add(new Song("Sample Song 8", "Sample Artist 6", R.drawable.sample_album));
+        artist_6_songs.add(new Song("Oats We Sow", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("August Moon", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Doubtful", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Grey Weather", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Voice Like a Bell", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Wild West", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Stonewall, Stone Fence", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
+        artist_6_songs.add(new Song("Ghost", "Gregory and the Hawk", R.drawable.gregory_and_the_hawk));
 
         ArrayList<Song> artist_7_songs = new ArrayList<>();
-        artist_7_songs.add(new Song("Sample Song 1", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 2", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 3", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 4", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 5", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 6", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 7", "Sample Artist 7", R.drawable.sample_album));
-        artist_7_songs.add(new Song("Sample Song 8", "Sample Artist 7", R.drawable.sample_album));
+        artist_7_songs.add(new Song("Name for You", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Painting a Hole", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Cherry Hearts", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Fantasy Island", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Mildenhall", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Rubber Ballz", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Half a Million", "The Shins", R.drawable.the_shins));
+        artist_7_songs.add(new Song("Dead Alive", "The Shins", R.drawable.the_shins));
 
         ArrayList<Song> artist_8_songs = new ArrayList<>();
-        artist_8_songs.add(new Song("Sample Song 1", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 2", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 3", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 4", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 5", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 6", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 7", "Sample Artist 8", R.drawable.sample_album));
-        artist_8_songs.add(new Song("Sample Song 8", "Sample Artist 8", R.drawable.sample_album));
+        artist_8_songs.add(new Song("Green Light", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Sober", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Homemade Dynamite", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("The Louvre", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Liability", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Hard Feelings/Loveless", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Sober II (Melodrama)", "Melodrama", R.drawable.lorde));
+        artist_8_songs.add(new Song("Writer in the Dark", "Melodrama", R.drawable.lorde));
 
         //Find the ListView object in the SongsActivity layout file with the ID called list_view
         final ListView listView = findViewById(R.id.list_view);
@@ -139,16 +140,16 @@ public class SongsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //find the TextView with the name artist_text_view and set it's current contents to a String to pass as a param in the object Parceable
+                //find the TextView with the name artist_text_view and set it's current contents to a String to pass as a param in the object Parcelable
                 TextView artistName = view.findViewById(R.id.artist_text_view);
                 String artist = artistName.getText().toString();
 
-                //find the TextView with the name title_text_view and set it's current contents to a String to pass as a param in the object Parceable
-               TextView songTitle = view.findViewById(R.id.title_text_view);
+                //find the TextView with the name title_text_view and set it's current contents to a String to pass as a param in the object Parcelable
+                TextView songTitle = view.findViewById(R.id.title_text_view);
                 String currentSong = songTitle.getText().toString();
 
                 //find the ImageView with the name song_image_view and set it's tag to pass as a param in the object Parceable
-                //Learned how to assign a tag and pass it as an extra here: https://stackoverflow.com/questions/32530156/how-to-get-image-id-from-listview
+                //Learned how to assign a tag and pass it as an extra from these resources: https://stackoverflow.com/questions/32530156/how-to-get-image-id-from-listview
                 //https://stackoverflow.com/questions/17393508/how-to-get-the-drawable-name-from-my-image-in-a-list-view-android
                 ImageView cover = view.findViewById(R.id.song_image_view);
                 int coverTag = (int) cover.getTag();
@@ -156,7 +157,7 @@ public class SongsActivity extends AppCompatActivity {
                 //Create new intent to start PlayingActivity and pass current song details
                 Intent playingIntent = new Intent(SongsActivity.this, PlayingActivity.class);
                 if (getIntent() != null) {
-                playingIntent.putExtra("Song_playing", new Song(artist, currentSong, coverTag));
+                    playingIntent.putExtra("Song_playing", new Song(artist, currentSong, coverTag));
                 }
                 SongsActivity.this.startActivity(playingIntent);
             }
@@ -191,20 +192,21 @@ public class SongsActivity extends AppCompatActivity {
                 listView.setAdapter(adapter);
                 break;
             }
-            case "Sample Artist 6": {
+            case "Gregory and the Hawk": {
                 SongAdapter adapter = new SongAdapter(this, artist_6_songs);
                 listView.setAdapter(adapter);
                 break;
             }
-            case "Sample Artist 7": {
+            case "The Shins": {
                 SongAdapter adapter = new SongAdapter(this, artist_7_songs);
                 listView.setAdapter(adapter);
                 break;
             }
-            case "Sample Artist 8": {
+            case "Lorde": {
                 SongAdapter adapter = new SongAdapter(this, artist_8_songs);
                 listView.setAdapter(adapter);
                 break;
             }
         }
-}}
+    }
+}

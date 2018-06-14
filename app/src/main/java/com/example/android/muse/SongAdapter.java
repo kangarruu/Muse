@@ -19,17 +19,19 @@ public class SongAdapter extends ArrayAdapter<Song> {
     private ArrayList<Song> songs;
     Context mContext;
 
-    public SongAdapter(Activity context, ArrayList<Song> songs){
+    public SongAdapter(Activity context, ArrayList<Song> songs) {
         super(context, 0, songs);
     }
-    /**Override code received through code --> Override methods
+
+    /**
+     * Override code received through code --> Override methods
      * Overriding getView method to provide new layout for the listView
      */
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final View listItemView = getWorkingView (convertView);
+        final View listItemView = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(listItemView);
         //Get the Word object located at the current position in the list
         final Song currentSong = getItem(position);
@@ -42,6 +44,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         //Get the resource ID associated with current Song object and set it on the ImageView stored in viewHolder
         viewHolder.song_image_view.setImageResource(currentSong.getImageResourceId());
+        //Set the ImageResourceID as a tag for passing in Parcelable extra in the SongActivity
         viewHolder.song_image_view.setTag(currentSong.getImageResourceId());
 
 
@@ -52,13 +55,13 @@ public class SongAdapter extends ArrayAdapter<Song> {
     }
 
     //Method for recycling view or inflating a new one
-   private View getWorkingView(final View convertView) {
-       View workingView = null;
-       if (null == convertView) {
+    private View getWorkingView(final View convertView) {
+        View workingView = null;
+        if (null == convertView) {
             final Context context = getContext();
-            final LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            workingView = inflater.inflate (R.layout.song_list_item, null);
+            workingView = inflater.inflate(R.layout.song_list_item, null);
         } else {
             workingView = convertView;
         }
@@ -73,11 +76,11 @@ public class SongAdapter extends ArrayAdapter<Song> {
         public ImageView song_image_view;
     }
 
-    private ViewHolder getViewHolder (final View workingView){
+    private ViewHolder getViewHolder(final View workingView) {
         final Object tag = workingView.getTag();
         ViewHolder viewHolder = null;
 
-        if(null == tag || !(tag instanceof ViewHolder)){
+        if (null == tag || !(tag instanceof ViewHolder)) {
             viewHolder = new ViewHolder();
 
             //Locate the TextView in the song_list_item.xml that holds the song title for Song object via findViewByID
@@ -89,7 +92,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
             workingView.setTag(viewHolder);
         } else {
-                viewHolder = (ViewHolder)tag;
+            viewHolder = (ViewHolder) tag;
         }
         return viewHolder;
     }

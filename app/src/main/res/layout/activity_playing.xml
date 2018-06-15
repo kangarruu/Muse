@@ -42,11 +42,31 @@
         android:textSize="22sp"
         tools:text="Song Name"/>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/playing_toolbar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_below="@id/playing_song_text_view"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
 
+        <ImageView
+            android:id="@+id/rwd_image_view"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_action_playback_rew" />
+
+        <ImageView
+            android:id="@+id/play_image_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/play_icon_playing" />
+
+        <ImageView
+            android:id="@+id/skip_image_view"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_action_playback_forw" />
+
+    </LinearLayout>
 
 </RelativeLayout>
